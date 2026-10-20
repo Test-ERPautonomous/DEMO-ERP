@@ -157,9 +157,6 @@ export const WorkshopSidebar: React.FC<WorkshopSidebarProps> = React.memo(({
                 <span className="font-black text-white text-base tracking-wide leading-tight uppercase truncate">
                   AUTONOMOUS
                 </span>
-                <span className="text-[10px] font-bold text-sky-200 tracking-widest uppercase truncate mt-0.5">
-                  GARAGE &amp; SCRAP
-                </span>
               </div>
             )}
           </div>
