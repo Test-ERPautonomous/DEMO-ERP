@@ -181,7 +181,7 @@ export const GarageDashboard: React.FC<Props> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight">Workshop Overview</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight">WORKFLOW</h1>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-100 text-sky-800 border border-sky-200">
               Live Workshop
             </span>
