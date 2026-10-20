@@ -150,12 +150,12 @@ export const WorkshopSidebar: React.FC<WorkshopSidebarProps> = React.memo(({
           <div className="flex items-center overflow-hidden">
             {isCollapsed ? (
               <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0 text-white font-black text-lg border border-white/20 shadow-xs">
-                {activeCompanyName ? activeCompanyName.charAt(0).toUpperCase() : 'N'}
+                {activeCompanyName ? activeCompanyName.charAt(0).toUpperCase() : 'A'}
               </div>
             ) : (
               <div className="flex flex-col justify-center min-w-0 py-1">
                 <span className="font-black text-white text-base tracking-wide leading-tight uppercase truncate">
-                  NAJM AL HUDA
+                  AUTONOMOUS
                 </span>
                 <span className="text-[10px] font-bold text-sky-200 tracking-widest uppercase truncate mt-0.5">
                   GARAGE &amp; SCRAP

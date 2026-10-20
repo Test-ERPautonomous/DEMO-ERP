@@ -18,7 +18,7 @@ import {
 } from '../types';
 
 export const INITIAL_SETTINGS: GarageSettings = {
-  garageName: 'NAJM AL HUDA GARAGE & SCRAP',
+  garageName: 'AUTONOMOUS GARAGE & SCRAP',
   garageNameAr: 'ورشة صيانة السيارات المتكاملة',
   tagline: 'Automotive Workshop, Collision Repair & Parts ERP',
   address: 'Street 24, Industrial Area',
@@ -26,7 +26,7 @@ export const INITIAL_SETTINGS: GarageSettings = {
   country: 'Qatar',
   crNumber: 'CR No. 2026/001',
   phone: '+974 4400 0000',
-  email: 'info@najmalhuda.qa',
+  email: 'info@autonomous.qa',
   taxId: 'GTA Tax Card: 2026-QA-001',
   currencySymbol: 'QAR',
   taxRatePercent: 0,
@@ -218,11 +218,11 @@ export const INITIAL_USERS: GarageUser[] = [
 export const INITIAL_COMPANIES: CompanyProfile[] = [
   {
     id: 'comp_new',
-    name: 'NAJM AL HUDA GARAGE & SCRAP',
-    code: 'NAJM',
+    name: 'AUTONOMOUS GARAGE & SCRAP',
+    code: 'AUTO',
     address: 'Street 24, Industrial Area, Doha, Qatar',
     phone: '+974 4400 0000',
-    email: 'info@najmalhuda.qa',
+    email: 'info@autonomous.qa',
     crNumber: 'CR No. 2026/001',
     currencySymbol: 'QAR',
     isPrimary: true,
