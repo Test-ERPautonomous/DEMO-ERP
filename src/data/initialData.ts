@@ -1,0 +1,287 @@
+import { 
+  GarageSettings, 
+  InventoryItem, 
+  JobCard, 
+  PurchaseOrder, 
+  CounterSale, 
+  Invoice,
+  GarageUser,
+  CompanyProfile,
+  CustomerMasterItem,
+  SupplierMasterItem,
+  VehicleMasterItem,
+  StockMovement,
+  ScrapPriceRate,
+  ScrapIntake,
+  ScrapSale,
+  EstimationItem
+} from '../types';
+
+export const INITIAL_SETTINGS: GarageSettings = {
+  garageName: 'NAJM AL HUDA GARAGE & SCRAP',
+  garageNameAr: 'ورشة صيانة السيارات المتكاملة',
+  tagline: 'Automotive Workshop, Collision Repair & Parts ERP',
+  address: 'Street 24, Industrial Area',
+  cityStateZip: 'Doha, State of Qatar',
+  country: 'Qatar',
+  crNumber: 'CR No. 2026/001',
+  phone: '+974 4400 0000',
+  email: 'info@najmalhuda.qa',
+  taxId: 'GTA Tax Card: 2026-QA-001',
+  currencySymbol: 'QAR',
+  taxRatePercent: 0,
+  defaultLaborRate: 150,
+  paintBoothHourRate: 200,
+};
+
+export const NEW_COMPANY_SETTINGS: GarageSettings = {
+  garageName: 'NAJM AL HUDA GARAGE & SCRAP',
+  garageNameAr: 'ورشة صيانة السيارات المتكاملة',
+  tagline: 'Automotive Workshop, Collision Repair & Parts ERP',
+  address: 'Street 24, Industrial Area',
+  cityStateZip: 'Doha, State of Qatar',
+  country: 'Qatar',
+  crNumber: 'CR No. 2026/001',
+  phone: '+974 4400 0000',
+  email: 'info@najmalhuda.qa',
+  taxId: 'GTA Tax Card: 2026-QA-001',
+  currencySymbol: 'QAR',
+  taxRatePercent: 0,
+  defaultLaborRate: 150,
+  paintBoothHourRate: 200,
+};
+
+export const INITIAL_USERS: GarageUser[] = [
+  {
+    id: 'usr-admin',
+    username: 'autonomous',
+    fullName: 'Autonomous Admin',
+    role: 'owner',
+    email: 'autonomous@najmalhuda.qa',
+    phone: '+974 5511 2233',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: true,
+      canAdvanceJobStatus: true,
+      canManageDentingPainting: true,
+      canManageInventory: true,
+      canManagePurchasesAndSales: true,
+      canViewServiceHistory: true,
+      canManageBilling: true,
+      canManageSettings: true,
+      canManageUsers: true,
+    },
+  },
+  {
+    id: 'usr-manager',
+    username: 'osman',
+    fullName: 'Osman Al-Ghamdi',
+    role: 'manager',
+    email: 'osman@najmalhuda.qa',
+    phone: '+974 5522 3344',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: true,
+      canAdvanceJobStatus: true,
+      canManageDentingPainting: true,
+      canManageInventory: true,
+      canManagePurchasesAndSales: true,
+      canViewServiceHistory: true,
+      canManageBilling: true,
+      canManageSettings: true,
+      canManageUsers: false,
+    },
+  },
+  {
+    id: 'usr-accountant',
+    username: 'kareem',
+    fullName: 'Kareem Finance',
+    role: 'accountant',
+    email: 'kareem@najmalhuda.qa',
+    phone: '+974 5533 4455',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: false,
+      canAdvanceJobStatus: false,
+      canManageDentingPainting: false,
+      canManageInventory: false,
+      canManagePurchasesAndSales: true,
+      canViewServiceHistory: true,
+      canManageBilling: true,
+      canManageSettings: false,
+      canManageUsers: false,
+    },
+  },
+  {
+    id: 'usr-advisor',
+    username: 'salim',
+    fullName: 'Salim Reception',
+    role: 'service_advisor',
+    email: 'salim@najmalhuda.qa',
+    phone: '+974 5544 5566',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: true,
+      canAdvanceJobStatus: true,
+      canManageDentingPainting: true,
+      canManageInventory: false,
+      canManagePurchasesAndSales: false,
+      canViewServiceHistory: true,
+      canManageBilling: true,
+      canManageSettings: false,
+      canManageUsers: false,
+    },
+  },
+  {
+    id: 'usr-parts',
+    username: 'bilal',
+    fullName: 'Bilal Storekeeper',
+    role: 'parts_manager',
+    email: 'bilal@najmalhuda.qa',
+    phone: '+974 5555 6677',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: false,
+      canAdvanceJobStatus: false,
+      canManageDentingPainting: false,
+      canManageInventory: true,
+      canManagePurchasesAndSales: true,
+      canViewServiceHistory: false,
+      canManageBilling: false,
+      canManageSettings: false,
+      canManageUsers: false,
+    },
+  },
+  {
+    id: 'usr-tech',
+    username: 'tariq',
+    fullName: 'Tariq Technician',
+    role: 'technician',
+    email: 'tariq@najmalhuda.qa',
+    phone: '+974 5566 7788',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: true,
+      canAdvanceJobStatus: true,
+      canManageDentingPainting: true,
+      canManageInventory: false,
+      canManagePurchasesAndSales: false,
+      canViewServiceHistory: true,
+      canManageBilling: false,
+      canManageSettings: false,
+      canManageUsers: false,
+    },
+  },
+  {
+    id: 'usr-cashier',
+    username: 'fatima',
+    fullName: 'Fatima Cashier',
+    role: 'cashier',
+    email: 'fatima@najmalhuda.qa',
+    phone: '+974 5577 8899',
+    isActive: true,
+    createdAt: '2026-01-01',
+    lastLogin: '2026-09-22 09:00',
+    permissions: {
+      canViewDashboard: true,
+      canManageJobCards: false,
+      canAdvanceJobStatus: false,
+      canManageDentingPainting: false,
+      canManageInventory: false,
+      canManagePurchasesAndSales: true,
+      canViewServiceHistory: true,
+      canManageBilling: true,
+      canManageSettings: false,
+      canManageUsers: false,
+    },
+  },
+];
+
+export const INITIAL_COMPANIES: CompanyProfile[] = [
+  {
+    id: 'comp_new',
+    name: 'NAJM AL HUDA GARAGE & SCRAP',
+    code: 'NAJM',
+    address: 'Street 24, Industrial Area, Doha, Qatar',
+    phone: '+974 4400 0000',
+    email: 'info@najmalhuda.qa',
+    crNumber: 'CR No. 2026/001',
+    currencySymbol: 'QAR',
+    isPrimary: true,
+    createdAt: '2026-01-01T00:00:00.000Z',
+  },
+];
+
+export const INITIAL_CUSTOMERS_LEGACY: CustomerMasterItem[] = [
+  { id: 'cust-1', name: 'Sheikh Mohammed Al-Thani', nameAr: 'الشيخ محمد آل ثاني', contact: 'Sheikh Mohammed', phone: '+974 5511 8899', email: 'm.althani@vip.qa', qid: '28563401122', address: 'Al Waab, Villa 12', city: 'Doha', accountType: 'VIP Individual', creditLimit: 50000, balance: 0, createdAt: '2026-01-01' },
+  { id: 'cust-2', name: 'Nasser Fahad Al-Kuwari', nameAr: 'ناصر فهد الكواري', contact: 'Nasser Fahad', phone: '+974 6622 3344', email: 'nasser.kuwari@outlook.com', qid: '29063402233', address: 'West Bay Lagoon', city: 'Doha', accountType: 'Individual', creditLimit: 15000, balance: 0, createdAt: '2026-01-01' },
+  { id: 'cust-3', name: 'Al Maha Limousine & Rent A Car', nameAr: 'المها لتأجير السيارات', contact: 'Kareem Mansoor', phone: '+974 4422 1100', email: 'fleet@almaha-rent.qa', qid: 'CR-882910', address: 'Old Airport Road', city: 'Doha', accountType: 'Corporate Fleet', creditLimit: 100000, balance: 0, createdAt: '2026-01-01' },
+  { id: 'cust-4', name: 'Abdulrahman Al-Sulaiti', nameAr: 'عبدالرحمن السليطي', contact: 'Abdulrahman', phone: '+974 7733 4455', email: 'a.sulaiti@gmail.com', qid: '28863405566', address: 'Al Hilal', city: 'Doha', accountType: 'Individual', creditLimit: 20000, balance: 0, createdAt: '2026-01-01' },
+  { id: 'cust-5', name: 'Doha Express Logistics WLL', nameAr: 'شركة الدوحة اكسبريس للخدمات اللوجستية', contact: 'Tariq Nabil', phone: '+974 4499 7788', email: 'transport@dohaexpress.qa', qid: 'CR-104921', address: 'Industrial Area Street 2', city: 'Doha', accountType: 'Corporate', creditLimit: 75000, balance: 0, createdAt: '2026-01-01' },
+];
+
+export const INITIAL_VEHICLES_LEGACY: VehicleMasterItem[] = [
+  { id: 'veh-1', customerId: 'cust-1', customerName: 'Sheikh Mohammed Al-Thani', customerPhone: '+974 5511 8899', plateNumber: '112233', vin: 'JTEBU5JR8K5129841', make: 'Toyota', model: 'Land Cruiser VXR 5.7L', yearFrom: 2022, yearTo: 2022, bodyType: 'SUV', engine: '3UR-FE 5.7L V8', category: 'Luxury SUV', color: 'White Pearl (070)', mileage: 48500, createdAt: '2026-01-01' },
+  { id: 'veh-2', customerId: 'cust-2', customerName: 'Nasser Fahad Al-Kuwari', customerPhone: '+974 6622 3344', plateNumber: '445566', vin: 'JN1TBNY62Z0098124', make: 'Nissan', model: 'Patrol Titanium V8', yearFrom: 2023, yearTo: 2023, bodyType: 'SUV', engine: 'VK56VD 5.6L V8', category: 'Luxury SUV', color: 'Metallic Gray (KAD)', mileage: 29000, createdAt: '2026-01-01' },
+  { id: 'veh-3', customerId: 'cust-3', customerName: 'Al Maha Limousine & Rent A Car', customerPhone: '+974 4422 1100', plateNumber: '778899', vin: 'JTJHY7AX5L4019283', make: 'Lexus', model: 'LX570 Superior', yearFrom: 2021, yearTo: 2021, bodyType: 'SUV', engine: '3UR-FE 5.7L V8', category: 'Premium Luxury', color: 'Astral Black (202)', mileage: 74200, createdAt: '2026-01-01' },
+  { id: 'veh-4', customerId: 'cust-4', customerName: 'Abdulrahman Al-Sulaiti', customerPhone: '+974 7733 4455', plateNumber: '334455', vin: 'WDB4633461X291039', make: 'Mercedes-Benz', model: 'G63 AMG V8 BiTurbo', yearFrom: 2024, yearTo: 2024, bodyType: 'SUV', engine: 'M177 4.0L BiTurbo', category: 'High Performance', color: 'Obsidian Black (197)', mileage: 14500, createdAt: '2026-01-01' },
+  { id: 'veh-5', customerId: 'cust-5', customerName: 'Doha Express Logistics WLL', customerPhone: '+974 4499 7788', plateNumber: '889900', vin: 'MR0BA3CD2N1049281', make: 'Toyota', model: 'Hilux Double Cab 2.8D', yearFrom: 2023, yearTo: 2023, bodyType: 'Pickup', engine: '1GD-FTV 2.8L Diesel', category: 'Commercial Pickup', color: 'Super White', mileage: 62000, createdAt: '2026-01-01' },
+];
+
+export const INITIAL_SUPPLIERS_LEGACY: SupplierMasterItem[] = [
+  { id: 'supp-1', name: 'Qatar Auto Spare Parts WLL', contact: 'Kareem Mansoor', phone: '+974 4488 1234', email: 'sales@qatarautoparts.qa', location: 'Street 10, Industrial Area, Doha', category: 'OEM Spare Parts & Filters', terms: 'Net 30 Days', taxId: 'QA-TRN-1011', currentBalance: 0 },
+  { id: 'supp-2', name: 'Al Attiya Motors & Trading Co.', contact: 'Salim Al-Nuaimi', phone: '+974 4455 6789', email: 'parts@alattiya.qa', location: 'Salwa Road, Doha', category: 'Nissan & General Motors Parts', terms: 'Net 45 Days', taxId: 'QA-TRN-1022', currentBalance: 0 },
+  { id: 'supp-3', name: 'Doha Modern Spare Parts Est.', contact: 'Zubair Qureshi', phone: '+974 4460 3344', email: 'orders@dohamodernparts.qa', location: 'Street 24, Industrial Area, Doha', category: 'Electrical, Spark Plugs & Batteries', terms: 'Cash / 15 Days', taxId: 'QA-TRN-1033', currentBalance: 0 },
+  { id: 'supp-4', name: 'Gulf Lubricants & Fluids Co.', contact: 'Anas Al-Sayed', phone: '+974 4470 5566', email: 'info@gulflubes.qa', location: 'Industrial Area, Street 15, Doha', category: 'Oils, Coolants & AC Gases', terms: 'Net 30 Days', taxId: 'QA-TRN-1044', currentBalance: 0 },
+  { id: 'supp-5', name: 'National Collision & Paint Supplies', contact: 'Mounir Haddad', phone: '+974 4433 9988', email: 'sales@nationalpaintqa.com', location: 'Street 38, Industrial Area, Doha', category: 'Paints, Clearcoats & Body Consumables', terms: 'Net 30 Days', taxId: 'QA-TRN-1055', currentBalance: 0 },
+];
+
+export const INITIAL_INVENTORY: InventoryItem[] = [
+  { id: 'inv-1', sku: 'OIL-SYN-5W30', name: 'Fully Synthetic 5W-30 Engine Oil (4L)', category: 'Lubricants & Fluids', oemNumber: '08880-80845', supplier: 'Gulf Lubricants & Fluids Co.', unitCost: 110, sellingPrice: 165, unitPrice: 165, quantityOnHand: 45, quantity: 45, minReorderLevel: 5, unit: 'cans' },
+  { id: 'inv-2', sku: 'OIL-SYN-0W20', name: 'Fully Synthetic 0W-20 Premium Oil (4L)', category: 'Lubricants & Fluids', oemNumber: '08880-12605', supplier: 'Gulf Lubricants & Fluids Co.', unitCost: 130, sellingPrice: 195, unitPrice: 195, quantityOnHand: 38, quantity: 38, minReorderLevel: 5, unit: 'cans' },
+  { id: 'inv-3', sku: 'FLT-OIL-LC200', name: 'OEM Engine Oil Filter (Land Cruiser / LX570)', category: 'Engine & Filters', oemNumber: '04152-YZZA4', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 28, sellingPrice: 55, unitPrice: 55, quantityOnHand: 60, quantity: 60, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-4', sku: 'FLT-OIL-Y62', name: 'OEM Engine Oil Filter (Nissan Patrol Y62)', category: 'Engine & Filters', oemNumber: '15208-9E01A', supplier: 'Al Attiya Motors & Trading Co.', unitCost: 25, sellingPrice: 50, unitPrice: 50, quantityOnHand: 50, quantity: 50, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-5', sku: 'FLT-AIR-LC200', name: 'High Flow Air Filter (Toyota LC200 V8)', category: 'Engine & Filters', oemNumber: '17801-38030', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 65, sellingPrice: 120, unitPrice: 120, quantityOnHand: 30, quantity: 30, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-6', sku: 'FLT-AIR-Y62', name: 'Air Filter Element Set (Nissan Patrol Y62)', category: 'Engine & Filters', oemNumber: '16546-1HP0E', supplier: 'Al Attiya Motors & Trading Co.', unitCost: 70, sellingPrice: 130, unitPrice: 130, quantityOnHand: 25, quantity: 25, minReorderLevel: 5, unit: 'sets' },
+  { id: 'inv-7', sku: 'FLT-CABIN-LC', name: 'Cabin AC Air Filter with Activated Carbon', category: 'Consumables & Tools', oemNumber: '87139-50100', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 40, sellingPrice: 85, unitPrice: 85, quantityOnHand: 40, quantity: 40, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-8', sku: 'BRK-PAD-F-LC200', name: 'Front Ceramic Brake Pads (Toyota LC200)', category: 'Brakes & Suspension', oemNumber: '04465-60280', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 180, sellingPrice: 320, unitPrice: 320, quantityOnHand: 24, quantity: 24, minReorderLevel: 5, unit: 'sets' },
+  { id: 'inv-9', sku: 'BRK-PAD-R-LC200', name: 'Rear Ceramic Brake Pads (Toyota LC200)', category: 'Brakes & Suspension', oemNumber: '04466-60140', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 140, sellingPrice: 260, unitPrice: 260, quantityOnHand: 20, quantity: 20, minReorderLevel: 5, unit: 'sets' },
+  { id: 'inv-10', sku: 'BRK-PAD-F-Y62', name: 'Front Brake Pads Set (Nissan Patrol Y62)', category: 'Brakes & Suspension', oemNumber: 'D1060-1LB0A', supplier: 'Al Attiya Motors & Trading Co.', unitCost: 195, sellingPrice: 340, unitPrice: 340, quantityOnHand: 18, quantity: 18, minReorderLevel: 5, unit: 'sets' },
+  { id: 'inv-11', sku: 'BRK-ROT-F-LC200', name: 'Front Vented Brake Disc Rotor (LC200)', category: 'Brakes & Suspension', oemNumber: '43512-60191', supplier: 'Qatar Auto Spare Parts WLL', unitCost: 240, sellingPrice: 420, unitPrice: 420, quantityOnHand: 12, quantity: 12, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-12', sku: 'SPK-IRID-DENSO', name: 'Denso Iridium Spark Plug SK20HR11 (Set of 8)', category: 'Engine & Filters', oemNumber: '90919-01191', supplier: 'Doha Modern Spare Parts Est.', unitCost: 220, sellingPrice: 380, unitPrice: 380, quantityOnHand: 15, quantity: 15, minReorderLevel: 5, unit: 'sets' },
+  { id: 'inv-13', sku: 'BAT-AGM-95AH', name: 'VARTA Silver Dynamic AGM Battery 95Ah', category: 'Consumables & Tools', oemNumber: '595901085', supplier: 'Doha Modern Spare Parts Est.', unitCost: 480, sellingPrice: 750, unitPrice: 750, quantityOnHand: 8, quantity: 8, minReorderLevel: 5, unit: 'pcs' },
+  { id: 'inv-14', sku: 'GAS-AC-R134A', name: 'DuPont R134a AC Refrigerant Gas Cylinder (13.6kg)', category: 'Consumables & Tools', oemNumber: 'R134A-136KG', supplier: 'Gulf Lubricants & Fluids Co.', unitCost: 290, sellingPrice: 480, unitPrice: 480, quantityOnHand: 6, quantity: 6, minReorderLevel: 5, unit: 'cans' },
+  { id: 'inv-15', sku: 'PNT-CLR-2K', name: 'PPG 2K High Gloss Ceramic Clearcoat (5L + Hardener)', category: 'Body & Paint Materials', oemNumber: 'D8105-5L', supplier: 'National Collision & Paint Supplies', unitCost: 350, sellingPrice: 580, unitPrice: 580, quantityOnHand: 10, quantity: 10, minReorderLevel: 5, unit: 'sets' },
+];
+
+export const INITIAL_JOB_CARDS: JobCard[] = [];
+export const INITIAL_INVOICES: Invoice[] = [];
+export const INITIAL_ESTIMATES: EstimationItem[] = [];
+export const INITIAL_STOCK_MOVEMENTS: StockMovement[] = [];
+export const INITIAL_PURCHASE_ORDERS: PurchaseOrder[] = [];
+export const INITIAL_SCRAP_RATES: ScrapPriceRate[] = [];
+export const INITIAL_SCRAP_INTAKES: ScrapIntake[] = [];
+export const INITIAL_SCRAP_SALES: ScrapSale[] = [];
+export const INITIAL_COUNTER_SALES: CounterSale[] = [];
+export const INITIAL_EXPENSES = [];
+export const INITIAL_WARRANTIES = [];
+export const INITIAL_INSURANCE_CLAIMS = [];
+export const INITIAL_AUDIT_LOGS = [];

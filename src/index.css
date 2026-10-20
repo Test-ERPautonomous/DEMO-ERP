@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #0284c7;
+    --primary-hover: #0369a1;
+    --bg-main: #f0f9ff;
+    --card-bg: #ffffff;
+    --border-color: #bae6fd;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f0f9ff;
+  color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ==========================================================================
+   PRINT-ONLY STYLESHEET & A4 PAPER LAYOUT UTILITIES
+   Ensures clean, professional output for Invoices, Job Cards, Delivery Notes,
+   Estimates, and Cash Receipts when printed via Ctrl+P or window.print().
+   ========================================================================== */
+
+/* Utility classes for screen vs print visibility */
+.print-only,
+.print-show {
+  display: none !important;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 10mm 12mm 10mm 12mm;
+}
+
+@media print {
+  /* 1. Force exact color printing and light background */
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+    width: 100% !important;
+    overflow: visible !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 2. Hide Navigation, Sidebars, Toolbars, Headers, Modals Backdrop & UI Controls */
+  .no-print,
+  .print\:hidden,
+  nav,
+  aside,
+  header,
+  .sidebar,
+  .record-toolbar,
+  .form-toolbar,
+  .tabs-header,
+  .modal-backdrop,
+  .modal-overlay,
+  button,
+  .btn,
+  input[type="button"],
+  input[type="submit"],
+  .no-print-area,
+  [role="navigation"],
+  .top-bar,
+  .action-bar,
+  .search-bar,
+  .close-button,
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* 3. Reveal print-only elements */
+  .print-only,
+  .print-show,
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:inline-block {
+    display: inline-block !important;
+  }
+
+  .print\:flex {
+    display: flex !important;
+  }
+
+  /* 4. Reset Modal Containers so Printable Content Fills Page Cleanly */
+  div[role="dialog"],
+  .modal-content,
+  .fixed,
+  .absolute,
+  .relative {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  /* Target printable views specifically */
+  #printable-invoice-view,
+  #printable-job-card-view,
+  #printable-delivery-note-view,
+  #printable-cash-receipt-slip,
+  #printable-estimate-preview,
+  .printable-area,
+  .print-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  /* Hide non-root elements when printing */
+  body > *:not(#root) {
+    display: none !important;
+  }
+
+  /* 5. A4 Table Formatting Rules */
+  table,
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    font-size: 9.5pt !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    page-break-inside: auto;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  th,
+  td {
+    padding: 6px 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    text-align: left;
+    word-wrap: break-word !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 8.5pt !important;
+    letter-spacing: 0.02em;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Alternate zebra striping in print if class applied */
+  .print-table-striped tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Clean Totals and Summary Box Formatting */
+  .print-totals-box {
+    border: 1px solid #94a3b8 !important;
+    background-color: #f8fafc !important;
+    padding: 10px 12px !important;
+    border-radius: 4px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 6. Page Break Control Utilities */
+  .print-break-before,
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .print-break-after,
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .print-avoid-break,
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 7. Typography & Clean Borders for Printed ERP Documents */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  a {
+    color: #0f172a !important;
+    text-decoration: none !important;
+  }
+
+  /* Footer & Signature Section for A4 Invoices & Job Cards */
+  .print-footer-signatures {
+    margin-top: 24px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #cbd5e1 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-signature-box {
+    width: 45% !important;
+    border-top: 1px solid #0f172a !important;
+    padding-top: 4px !important;
+    text-align: center !important;
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+  }
+}
