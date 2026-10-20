@@ -1,0 +1,43 @@
+
+name: Sync DEMO-ERP to Autonomous-riad
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: demo-erp-one-way-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Push main to destination
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          AUTH_HEADER="$(printf 'x-access-token:%s' \
+            "$SYNC_TOKEN" | base64 -w 0)"
+
+          git \
+            -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH_HEADER}" \
+            push \
+            https://github.com/Autonomous-riad/Demo-ERP.git \
+            HEAD:refs/heads/main
